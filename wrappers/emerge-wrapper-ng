@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [[ -z $SYSROOT ]]; then
+	echo "ERROR: You have to set SYSROOT to use cross-emerge-ng!"
+	exit 1
+fi
+
+export CBUILD=$(portageq envvar CHOST)
+export PORTAGE_CONFIGROOT="$SYSROOT"
+export ROOT="$SYSROOT"
+
+if [[ -z $DONT_WRAP_COMPILERS ]]; then
+        export CC="__PREFIX__/lib/crossdev/bin/sysroot-gcc"
+        export CXX="__PREFIX__/lib/crossdev/bin/sysroot-g++"
+fi
+
+exec emerge --crosscompile "$@"
