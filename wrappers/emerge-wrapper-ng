@@ -5,9 +5,12 @@ if [[ -z $SYSROOT ]]; then
 	exit 1
 fi
 
+# Get triplet from build machine in /
 export CBUILD=$(portageq envvar CHOST)
-export PORTAGE_CONFIGROOT="$SYSROOT"
-export ROOT="$SYSROOT"
+
+# Switch to host machine in SYSROOT
+export ROOT="${SYSROOT}"
+export PORTAGE_CONFIGROOT="${SYSROOT}"
 
 if [[ -z $DONT_WRAP_COMPILERS ]]; then
         export CC="__PREFIX__/lib/crossdev/bin/sysroot-gcc"

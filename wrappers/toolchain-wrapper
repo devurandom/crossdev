@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [[ -z ${CBUILD} || -z ${SYSROOT} ]]; then
-	echo "ERROR: You have to set CBUILD and SYSROOT to use cross compiler wrappers!"
+if [[ -z ${CHOST} || -z ${SYSROOT} ]]; then
+	echo "ERROR: You have to set CHOST and SYSROOT to use cross compiler wrappers!"
 	echo "You should use cross-emerge-ng which sets this."
 	exit 1
 fi
 
-exec "${CBUILD}-${0##*-}" --sysroot "${SYSROOT}" "$@"
+exec "${CHOST}-${0##*-}" --sysroot "${SYSROOT}" "$@"
