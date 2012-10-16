@@ -5,7 +5,6 @@ include ../settings.mk
 
 PORTDIR ?= $(shell portageq envvar PORTDIR)
 FNAMES = cross-emerge  cross-fix-root  cross-pkg-config  emerge-wrapper  emerge-wrapper-ng
-WRAPPERS = toolchain-wrapper
 SITE = $(PREFIX)/share/crossdev/include/site
 TOPDIR =
 
@@ -17,7 +16,6 @@ all:
 install:
 	$(INSTALL_DIR) $(DESTDIR)/$(PREFIX)/bin/ $(DESTDIR)/$(PREFIX)/lib/crossdev/bin/ $(DESTDIR)/$(SITE)
 	$(INSTALL_EXEC) $(FNAMES) $(DESTDIR)/$(PREFIX)/bin/
-	$(INSTALL_EXEC) $(WRAPPERS) $(DESTDIR)/$(PREFIX)/lib/crossdev/bin/
 	cp -a etc $(DESTDIR)/$(PREFIX)/share/crossdev/
 	cp -a site $(DESTDIR)/$(PREFIX)/share/crossdev/include/
 	sed -i -e s@__PREFIX__@$(PREFIX)@g $(DESTDIR)/$(PREFIX)/bin/emerge-wrapper
@@ -25,8 +23,5 @@ install:
 	sed -i -e s@__TOPDIR__@$(SITE)@g $(DESTDIR)/$(SITE)/config.site
 	mv $(DESTDIR)/$(SITE)/config.site $(DESTDIR)/$(PREFIX)/share/
 	ln -sf $(PORTDIR)/profiles/embedded $(DESTDIR)/$(PREFIX)/share/crossdev/etc/portage/make.profile
-
-	ln -s toolchain-wrapper $(DESTDIR)/$(PREFIX)/lib/crossdev/bin/sysroot-gcc
-	ln -s toolchain-wrapper $(DESTDIR)/$(PREFIX)/lib/crossdev/bin/sysroot-g++
 
 .PHONY: all install

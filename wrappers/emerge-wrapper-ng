@@ -13,8 +13,10 @@ export ROOT="${SYSROOT}"
 export PORTAGE_CONFIGROOT="${SYSROOT}"
 
 if [[ -z $DONT_WRAP_COMPILERS ]]; then
-        export CC="__PREFIX__/lib/crossdev/bin/sysroot-gcc"
-        export CXX="__PREFIX__/lib/crossdev/bin/sysroot-g++"
+	export CFLAGS="--sysroot ${SYSROOT} $(portageq envvar CFLAGS)"
+	export CXXFLAGS="--sysroot ${SYSROOT} $(portageq envvar CXXFLAGS)"
+	export CPPFLAGS="--sysroot ${SYSROOT} $(portageq envvar CPPFLAGS)"
+	export LDFLAGS="--sysroot ${SYSROOT} $(portageq envvar LDFLAGS)"
 fi
 
 exec emerge "$@"
