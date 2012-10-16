@@ -5,10 +5,10 @@ if [[ -z $SYSROOT ]]; then
 	exit 1
 fi
 
-# Get triplet from build machine in /
+# Get host triplet from build platform in /
 export CBUILD=$(portageq envvar CHOST)
 
-# Switch to host machine in SYSROOT
+# Switch to host platform in SYSROOT
 export ROOT="${SYSROOT}"
 export PORTAGE_CONFIGROOT="${SYSROOT}"
 
@@ -17,4 +17,4 @@ if [[ -z $DONT_WRAP_COMPILERS ]]; then
         export CXX="__PREFIX__/lib/crossdev/bin/sysroot-g++"
 fi
 
-exec emerge --crosscompile "$@"
+exec emerge "$@"
