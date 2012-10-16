@@ -74,3 +74,6 @@ libreplace_cv_HAVE_SECURE_MKSTEMP=${libreplace_cv_HAVE_SECURE_MKSTEMP=yes}
 
 # sed, gettext, possibly more, https://bugs.gentoo.org/show_bug.cgi?id=432058
 gl_cv_func_working_acl_get_file=${gl_cv_func_working_acl_get_file=yes}
+
+# fcron, possibly more  
+ac_cv_func_memcmp_working=${ac_cv_func_memcmp_working=yes}
