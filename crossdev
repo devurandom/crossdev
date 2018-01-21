@@ -191,7 +191,7 @@ parse_target() {
 				CTARGET="aarch${CTARGET#arm}-unknown-linux-gnu";;
 			arm*)
 				CTARGET="${CTARGET}-unknown-linux-gnueabi";;
-			aarch64*|alpha*|cris*|hppa*|ia64*|m68*|mips*|powerpc*|sparc*|sh*|tile*)
+			aarch64*|alpha*|cris*|hppa*|ia64*|m68*|mips*|powerpc*|riscv*|sparc*|sh*|tile*)
 				CTARGET="${CTARGET}-unknown-linux-gnu";;
 			bfin*|h8300*|msp430*|nds32*|nios2*|spu*|xc16x*)
 				CTARGET="${CTARGET}-elf";;
@@ -210,6 +210,7 @@ parse_target() {
 		mips*)      TARCH=mips;;
 		powerpc64*) TARCH=ppc64;;
 		powerpc*)   TARCH=ppc;;
+		riscv*)     TARCH=riscv;;
 		sparc*)     TARCH=sparc;;
 		s390*)      TARCH=s390;;
 		sh*)        TARCH=sh;;
