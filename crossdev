@@ -275,6 +275,11 @@ parse_target() {
 		      LVER=">=2.21";
 		      KVER=">=4.0";;
 
+		riscv*)
+		      BVER=">=2.29";
+		      GVER=">=7.2"; # Without the riscv-overlay patches this should be 7.3
+		      DVER=">=8.0";;
+
 		spu*) TARCH=ppc64;
 		      KPKG="[none]";
 		      LPKG="newlib";;
